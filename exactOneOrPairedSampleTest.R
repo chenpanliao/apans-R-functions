@@ -10,7 +10,7 @@
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program.	 If not, see <http://www.gnu.org/licenses/>.
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 # To understand more details about this function, see:
 # Bryan F. J. Manly. 1997.
@@ -157,7 +157,9 @@ print.exactOneOrPairedSampleTest <- function(w){
 	if (!w$is.onesample){
 		cat(
 			paste(
-				"mean((", w$x1.name, ")-(", w$x2.name, ")) - mu = ", w$test.0, "\n",
+				"mean((", w$x1.name, ")-(", w$x2.name, ")) - mu = ",
+				w$test.0,
+				"\n",
 				sep=""
 			)
 		)
