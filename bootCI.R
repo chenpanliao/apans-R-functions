@@ -19,9 +19,9 @@
 bootCI <- function(
 	x,
 	alpha=0.05,
-	alternative=c("t", "l", "g"),		# see arg "alternative" in help(t.test)
-	B=1999,													# number of bootstrap samples
-	quantileAlgorithm = 7						# passed to quantile(type)
+	alternative=c("t", "l", "g"),	# see arg "alternative" in help(t.test)
+	B=1999,							# number of bootstrap samples
+	quantileAlgorithm = 7			# passed to quantile(type)
 ){
 	#validation
 	if(mode(x) != "numeric"){
@@ -118,9 +118,7 @@ print.bootCI <- function(w){
 	cat("Summary of x\n")
 	print(summary(w$x))
 	cat("CIs of mu\n")
-	mat <- 
-		rbind(w$CI.exact, w$CI.basic, w$CI.percentile, w$CI.studentized)
-	rownames(mat) <- 
-		c("$CI.exact", "$CI.basic", "$CI.percentile", "$CI.studentized")
+	mat <- rbind(w$CI.exact, w$CI.basic, w$CI.percentile, w$CI.studentized)
+	rownames(mat) <- c("$CI.exact", "$CI.basic", "$CI.percentile", "$CI.studentized")
 	print(mat)
 }
