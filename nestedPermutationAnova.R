@@ -24,9 +24,9 @@
 # to learn how to use this function
 
 nestedPermutationAnova <- function(
-	dv,				# Dependent variable
-	treatment,		# Treatment
-	subject,		# Experimental unit
+	dv,		# Dependent variable
+	treatment,	# Treatment
+	subject,	# Experimental unit
 	nreps = 1999	# Number of permutation
 ) {
 	# initiation

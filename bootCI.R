@@ -20,8 +20,8 @@ bootCI <- function(
 	x,
 	alpha=0.05,
 	alternative=c("t", "l", "g"),	# see arg "alternative" in help(t.test)
-	B=1999,							# number of bootstrap samples
-	quantileAlgorithm = 7			# passed to quantile(type)
+	B=1999,				# number of bootstrap samples
+	quantileAlgorithm = 7		# passed to quantile(type)
 ){
 	#validation
 	if(mode(x) != "numeric"){
