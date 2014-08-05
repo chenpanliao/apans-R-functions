@@ -6,16 +6,18 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program. If not, see <http://www.gnu.org/licenses/>.
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # To understand more details about this function, see:
 # Bryan F. J. Manly. 1997.
 # Randomization, bootstrap and Monte Carlo methods 
-# in biology. 2nd edition. pp. 91-97
+# in biology. 2nd edition. pp. 91-97.
+# Also see http://apansharing.blogspot.tw/2014/01/a-r-function-exact-onepaired-sample.html
+
 
 ## main function
 exactOneOrPairedSampleTest <- function(
