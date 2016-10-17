@@ -1,0 +1,143 @@
+#A general and simple method for obtaining R2 from generalized linear mixed-effects models#
+#Shinichi Nakagawa1,2 and Holger Schielzeth3#
+#1 National Centre of Growth and Development, Department of Zoology, University of Otago, Dunedin, New Zealand#
+#2 Department of Behavioral Ecology and Evolutionary Genetics, Max Planck Institute for Ornithology, Seewiesen, Germany#
+#3 Department of Evolutionary Biology, Bielefeld University, Bielefeld, Germany#
+#Running head: Variance explained by GLMMs#
+#Correspondence:#
+#S. Nakagawa; Department of Zoology, University of Otago, 340 Great King Street, Dunedin, 9054, New Zealand#
+#Tel:	+64 (0)3 479 5046#
+#Fax:	+64 (0)3 479 7584#
+#e-mail: shinichi.nakagawa@otago.ac.nz#
+#####################################################
+# A. Preparation#
+#####################################################
+# Note that data generation appears below the analysis section.#
+# You can use the simulated data table from the supplementary files to reproduce exactly the same results as presented in the paper.#
+#
+# Set the work directy that is used for rading/saving data tables#
+# setwd("/Users/R2")#
+#
+# load R required packages#
+# If this is done for the first time, it might need to first download and install the package#
+# install.packages("arm")#
+library(arm)#
+# install.packages("lme4")#
+library(lme4)
+install.packages("arm")
+# load R required packages#
+# If this is done for the first time, it might need to first download and install the package#
+# install.packages("arm")#
+library(arm)#
+# install.packages("lme4")#
+library(lme4)
+# Clear memory#
+rm(list = ls())#
+#
+# Read body length data (Gaussian, available for both sexes)#
+Data <- read.csv("BeetlesBody.csv")
+setwd("/Users/apan/Dropbox/r2-mixed-model")
+# Clear memory#
+rm(list = ls())#
+#
+# Read body length data (Gaussian, available for both sexes)#
+Data <- read.csv("BeetlesBody.csv")
+#A general and simple method for obtaining R2 from generalized linear mixed-effects models#
+#Shinichi Nakagawa1,2 and Holger Schielzeth3#
+#1 National Centre of Growth and Development, Department of Zoology, University of Otago, Dunedin, New Zealand#
+#2 Department of Behavioral Ecology and Evolutionary Genetics, Max Planck Institute for Ornithology, Seewiesen, Germany#
+#3 Department of Evolutionary Biology, Bielefeld University, Bielefeld, Germany#
+#Running head: Variance explained by GLMMs#
+#Correspondence:#
+#S. Nakagawa; Department of Zoology, University of Otago, 340 Great King Street, Dunedin, 9054, New Zealand#
+#Tel:	+64 (0)3 479 5046#
+#Fax:	+64 (0)3 479 7584#
+#e-mail: shinichi.nakagawa@otago.ac.nz#
+#####################################################
+# A. Preparation#
+#####################################################
+# Note that data generation appears below the analysis section.#
+# You can use the simulated data table from the supplementary files to reproduce exactly the same results as presented in the paper.#
+#
+# Set the work directy that is used for rading/saving data tables#
+# setwd("/Users/R2")#
+#
+# load R required packages#
+# If this is done for the first time, it might need to first download and install the package#
+# install.package("arm")#
+library(arm)#
+# install.package("lme4")#
+library(lme4)#
+#####################################################
+# B. Analysis#
+#####################################################
+#
+# 1. Analysis of body size (Gaussian mixed models)#
+#---------------------------------------------------#
+#
+# Clear memory#
+rm(list = ls())#
+#
+# Read body length data (Gaussian, available for both sexes)#
+Data <- read.csv("BeetlesBody.csv")#
+#
+# Fit null model without fixed effects (but including all random effects)#
+m0 <- lmer(BodyL ~ 1 + (1 | Population) + (1 | Container), data = Data)#
+#
+# Fit alternative model including fixed and all random effects#
+mF <- lmer(BodyL ~ Sex + Treatment + Condition + (1 | Population) + (1 | Container), data = Data)
+#A general and simple method for obtaining R2 from generalized linear mixed-effects models#
+#Shinichi Nakagawa1,2 and Holger Schielzeth3#
+#1 National Centre of Growth and Development, Department of Zoology, University of Otago, Dunedin, New Zealand#
+#2 Department of Behavioral Ecology and Evolutionary Genetics, Max Planck Institute for Ornithology, Seewiesen, Germany#
+#3 Department of Evolutionary Biology, Bielefeld University, Bielefeld, Germany#
+#Running head: Variance explained by GLMMs#
+#Correspondence:#
+#S. Nakagawa; Department of Zoology, University of Otago, 340 Great King Street, Dunedin, 9054, New Zealand#
+#Tel:	+64 (0)3 479 5046#
+#Fax:	+64 (0)3 479 7584#
+#e-mail: shinichi.nakagawa@otago.ac.nz#
+#####################################################
+# A. Preparation#
+#####################################################
+# Note that data generation appears below the analysis section.#
+# You can use the simulated data table from the supplementary files to reproduce exactly the same results as presented in the paper.#
+#
+# Set the work directy that is used for rading/saving data tables#
+# setwd("/Users/R2")#
+#
+# load R required packages#
+# If this is done for the first time, it might need to first download and install the package#
+# install.packages("arm")#
+library(arm)#
+# install.packages("lme4")#
+library(lme4)#
+#####################################################
+# B. Analysis#
+#####################################################
+#
+# 1. Analysis of body size (Gaussian mixed models)#
+#---------------------------------------------------#
+#
+# Clear memory#
+rm(list = ls())#
+#
+# Read body length data (Gaussian, available for both sexes)#
+Data <- read.csv("BeetlesBody.csv")#
+#
+# Fit null model without fixed effects (but including all random effects)#
+m0 <- lmer(BodyL ~ 1 + (1 | Population) + (1 | Container), data = Data)#
+#
+# Fit alternative model including fixed and all random effects#
+mF <- lmer(BodyL ~ Sex + Treatment + Habitat + (1 | Population) + (1 | Container), data = Data)
+summary(m0)#
+summary(mF)
+Fixed <- fixef(mF)[2] * mF@X[, 2] + fixef(mF)[3] * mF@X[, 3] + fixef(mF)[4] * mF@X[, 4]
+fixef(mF)
+model.matrix(mF)
+fixef(mF) %*% t(model.matrix(mF)
+fixef(mF) %*% t(model.matrix(mF))
+VarF <- var(as.vector(fixef(mF) %*% t(model.matrix(mF))))
+VarF
+VarF/(VarF + VarCorr(mF)$Container[1] + VarCorr(mF)$Population[1] + attr(VarCorr(mF), "sc")^2)
+(VarF + VarCorr(mF)$Container[1] + VarCorr(mF)$Population[1])/(VarF + VarCorr(mF)$Container[1] + VarCorr(mF)$Population[1] + (attr(VarCorr(mF), "sc")^2))
