@@ -6,7 +6,12 @@ lmer.R2 <- function(mod) {
   r2_marginal <- var_fixed / (var_fixed + var_random + var_resid)
   r2_conditional <-
     (var_fixed + var_random) / (var_fixed + var_random + var_resid)
-  ret <- c(R2Marginal = as.vector(r2_marginal),
-           R2Conditional = as.vector(r2_conditional))
+  ret <- c(
+    R2.Marginal = as.vector(r2_marginal),
+    R2.Conditional = as.vector(r2_conditional),
+		SD.Fixed = sqrt(var(model.matrix(mod) %*% fixef(mod))),
+		SD.Random = sqrt(sum(sapply(VarCorr(mod), c))),
+		SD.Residual = attr(VarCorr(mod), "sc")
+  )
   return(ret)
 }
